@@ -1,21 +1,39 @@
 .book-item {
-    padding: 10px;
-    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #999;
+    border-radius: 8px;
+    &__image-wrap {
+        padding-right: 20px;
+        text-align: center;
+    }
+    &__image {
+        width: 128px;
+    }
+    &__wrap {
+        width: 632px;
+    }
     &__title {
+        width: 92%;
+        margin: 0 0 3px 0;
+        font: 700 20px 'Open Sans', sans-serif;
+        color: #1574bd;
     }
     &__authors {
-    }
-    &__categories {
+        margin: 0 0 5px 0;
+        font: 600 15px 'Open Sans', sans-serif;
+        color: #008000;
     }
     &__info {
-    }
-    &__info-item {
-        padding-right: 8px;
-        &--date {
+        font: 400 14px 'Open Sans', sans-serif;
+        color: #808080;
+        &--categories {
         }
-        &--pages {
-        }
-        &--lang {
+        &--year {
         }
     }
 }

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import '../../css/BookItem.css';
+import defaultImage from '../../img/notebook.png';
 
 class BookItem extends Component {
     render() {
         const {
+            images,
             title,
             authors,
             publishedDate,
@@ -14,44 +16,44 @@ class BookItem extends Component {
             categories,
             language
         } = this.props;
+        let imageUrl = '';
+        if (images) {
+            imageUrl = images.thumbnail || images.smallThumbnail;
+        } else {
+            imageUrl = defaultImage;
+        }
         return (
             <div className="book-item">
-                <h4 className="book-item__title">
-                    {title}
-                </h4>
-                {authors
-                    ? <p className="book-item__authors">
-                          {authors}
-                      </p>
-                    : false}
-                {categories
-                    ? <p className="books-item__categories">
-                          {categories}
-                      </p>
-                    : false}
-                <p className="book-item__info">
-                    {publishedDate
-                        ? <span className="book-item__info-item book-item__info-item--date">
-                              {publishedDate}
-                          </span>
-                        : false}
-                    {pageCount
-                        ? <span className="book-item__info-item book-item__info-item--pages">
-                              {pageCount}
-                          </span>
-                        : false}
-                    {language
-                        ? <span className="book-item__info-item book-item__info-item--lang">
-                              {language}
-                          </span>
-                        : false}
-                </p>
+                <div className="book-item__image-wrap">
+                    <img src={imageUrl} alt="" className="book-item__image" />
+                </div>
+                <div className="book-item__wrap">
+                    <p className="book-item__info">
+                        {categories &&
+                            <span className="book-item__info--categories">
+                                {categories.join(', ')}
+                                {', '}
+                            </span>}
+                        {publishedDate &&
+                            <span className="book-item__info--year">
+                                {publishedDate.slice(0, 4)}
+                            </span>}
+                    </p>
+                    <h4 className="book-item__title">
+                        {title}
+                    </h4>
+                    {authors &&
+                        <p className="book-item__authors">
+                            {authors.join(', ')}
+                        </p>}
+                </div>
             </div>
         );
     }
 }
 
 BookItem.propTypes = {
+    images: PropTypes.object,
     title: PropTypes.string.isRequired,
     authors: PropTypes.array,
     publishedDate: PropTypes.string,
