@@ -1,0 +1,21 @@
+.book-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    &__title {
+    }
+    &__authors {
+    }
+    &__categories {
+    }
+    &__info {
+    }
+    &__info-item {
+        padding-right: 8px;
+        &--date {
+        }
+        &--pages {
+        }
+        &--lang {
+        }
+    }
+}

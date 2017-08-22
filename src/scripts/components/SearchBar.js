@@ -11,6 +11,7 @@ class SearchBar extends Component {
         };
         this.changeSearchQuery = this.changeSearchQuery.bind(this);
         this.findOnClick = this.findOnClick.bind(this);
+        this.findOnKeyDown = this.findOnKeyDown.bind(this);
     }
 
     changeSearchQuery(e) {
@@ -25,6 +26,12 @@ class SearchBar extends Component {
         fetchBooks(this.state.queryString);
     }
 
+    findOnKeyDown(e) {
+        if (e.keyCode === 13) {
+            this.findOnClick();
+        }
+    }
+
     render() {
         return (
             <div className="search-bar">
@@ -33,6 +40,7 @@ class SearchBar extends Component {
                     className="search-bar__search"
                     placeholder="Search..."
                     onChange={this.changeSearchQuery}
+                    onKeyDown={this.findOnKeyDown}
                 />
                 <button className="search-bar__search" onClick={this.findOnClick}>
                     Get

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { FETCHING_BOOKS, FETCHING_BOOKS_SUCCESS } from '../constants/Books';
 
 export function fetchBooks(queryString) {
@@ -7,11 +6,13 @@ export function fetchBooks(queryString) {
             type: FETCHING_BOOKS
         });
 
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${queryString}`).then(response =>
-            dispatch({
-                type: FETCHING_BOOKS_SUCCESS,
-                payload: response.data.items
-            })
-        );
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${queryString}&maxResults=40`)
+            .then(response => response.json())
+            .then(data =>
+                dispatch({
+                    type: FETCHING_BOOKS_SUCCESS,
+                    payload: data.items
+                })
+            );
     };
 }
