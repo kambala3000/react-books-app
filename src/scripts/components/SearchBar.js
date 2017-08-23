@@ -7,7 +7,8 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            queryString: ''
+            queryString: '',
+            hasChanged: false
         };
         this.changeSearchQuery = this.changeSearchQuery.bind(this);
         this.findOnClick = this.findOnClick.bind(this);
@@ -17,13 +18,17 @@ class SearchBar extends Component {
     changeSearchQuery(e) {
         const queryString = e.target.value.toLowerCase().trim();
         this.setState({
-            queryString
+            queryString,
+            hasChanged: true
         });
     }
 
     findOnClick() {
-        const { fetchBooks } = this.props.booksActions;
-        fetchBooks(this.state.queryString);
+        if (this.state.hasChanged) {
+            this.setState({ hasChanged: false });
+            const { fetchBooks } = this.props.booksActions;
+            fetchBooks(this.state.queryString);
+        }
     }
 
     findOnKeyDown(e) {

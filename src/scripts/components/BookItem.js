@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../css/BookItem.css';
 import defaultImage from '../../img/notebook.png';
+import Star from './svg/Star';
 
 class BookItem extends Component {
     render() {
@@ -46,6 +47,9 @@ class BookItem extends Component {
                         <p className="book-item__authors">
                             {authors.join(', ')}
                         </p>}
+                    <div className="book-item__star-wrap">
+                        <Star />
+                    </div>
                 </div>
             </div>
         );

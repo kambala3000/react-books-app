@@ -6,7 +6,9 @@ export function fetchBooks(queryString) {
             type: FETCHING_BOOKS
         });
 
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${queryString}&maxResults=40`)
+        fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=${queryString}&printType=books&maxResults=40`
+        )
             .then(response => response.json())
             .then(data =>
                 dispatch({

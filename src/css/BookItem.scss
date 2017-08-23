@@ -15,6 +15,7 @@
         width: 128px;
     }
     &__wrap {
+        position: relative;
         width: 632px;
     }
     &__title {
@@ -34,6 +35,20 @@
         &--categories {
         }
         &--year {
+        }
+    }
+    &__star-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__star-icon {
+        cursor: pointer;
+        fill: #fdbf00;
+        &--hover-effects {
+            &:hover {
+                fill: #ffd24d;
+            }
         }
     }
 }
