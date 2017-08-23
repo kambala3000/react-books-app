@@ -21,7 +21,7 @@ class BooksList extends Component {
                       title={item.volumeInfo.title}
                       authors={item.volumeInfo.authors}
                       publishedDate={item.volumeInfo.publishedDate}
-                      desctiption={item.volumeInfo.desctiption}
+                      description={item.volumeInfo.description}
                       pageCount={item.volumeInfo.pageCount}
                       categories={item.volumeInfo.categories}
                       language={item.volumeInfo.language}

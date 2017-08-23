@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import '../../css/BookItem.css';
 import defaultImage from '../../img/notebook.png';
@@ -12,7 +13,7 @@ class BookItem extends Component {
             title,
             authors,
             publishedDate,
-            desctiption,
+            description,
             pageCount,
             categories,
             language
@@ -23,6 +24,7 @@ class BookItem extends Component {
         } else {
             imageUrl = defaultImage;
         }
+
         return (
             <div className="book-item">
                 <div className="book-item__image-wrap">
@@ -47,6 +49,17 @@ class BookItem extends Component {
                         <p className="book-item__authors">
                             {authors.join(', ')}
                         </p>}
+                    {description &&
+                        <p
+                            className={classnames('book-item__description', {
+                                'book-item__description--cutted': description.length > 350
+                            })}
+                        >
+                            {description}
+                        </p>}
+                    {description &&
+                        description.length > 350 &&
+                        <span className="book-item__show-more">Read more...</span>}
                     <div className="book-item__star-wrap">
                         <Star />
                     </div>
