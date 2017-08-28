@@ -8,6 +8,17 @@ import defaultImage from '../../img/notebook.png';
 import Star from './svg/Star';
 
 class BookItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showAll: false
+        };
+    }
+
+    readMoreHandler = () => {
+        this.setState({ showAll: !this.state.showAll });
+    };
+
     render() {
         const {
             images,
@@ -52,9 +63,18 @@ class BookItem extends Component {
                         </p>}
                     {description &&
                         <p
-                            className={classnames('book-item__description', {
-                                'book-item__description--cutted': description.length > 350
-                            })}
+                            className={classnames(
+                                'book-item__description',
+                                {
+                                    'book-item__description--cutted':
+                                        !this.state.showAll && description.length > 350
+                                },
+                                { 'book-item__description--show-all': this.state.showAll }
+                            )}
+                            style={{
+                                maxHeight:
+                                    this.state.showAll && description.length / 80 * 18 + 20 + 'px'
+                            }}
                         >
                             {description}
                         </p>}
@@ -65,7 +85,9 @@ class BookItem extends Component {
                         </p>
                         {description &&
                             description.length > 350 &&
-                            <span className="book-item__show-more">Read more...</span>}
+                            <span className="book-item__show-more" onClick={this.readMoreHandler}>
+                                {this.state.showAll ? 'Hide 🡡' : 'Read more...'}
+                            </span>}
                     </div>
                     <div className="book-item__star-wrap">
                         <Star />
