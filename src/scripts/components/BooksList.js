@@ -5,30 +5,31 @@ import BookItem from './BookItem';
 import '../../css/BooksList.css';
 
 class BooksList extends Component {
-    constructor(props) {
-        super(props);
-        this.renderBooksList = this.renderBooksList.bind(this);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
-    renderBooksList() {
+    renderBooksList = () => {
         const { list, fetching } = this.props.books;
         const booksList = fetching
             ? <p className="books-list__loading">Loading...</p>
-            : list.map(item =>
-                  <BookItem
-                      key={item.id}
-                      images={item.volumeInfo.imageLinks}
-                      title={item.volumeInfo.title}
-                      authors={item.volumeInfo.authors}
-                      publishedDate={item.volumeInfo.publishedDate}
-                      description={item.volumeInfo.description}
-                      pageCount={item.volumeInfo.pageCount}
-                      categories={item.volumeInfo.categories}
-                      language={item.volumeInfo.language}
-                  />
-              );
+            : list
+              ? list.map(item =>
+                    <BookItem
+                        key={item.id}
+                        images={item.volumeInfo.imageLinks}
+                        title={item.volumeInfo.title}
+                        authors={item.volumeInfo.authors}
+                        publishedDate={item.volumeInfo.publishedDate}
+                        description={item.volumeInfo.description}
+                        pageCount={item.volumeInfo.pageCount}
+                        categories={item.volumeInfo.categories}
+                        language={item.volumeInfo.language}
+                    />
+                )
+              : <p className="books-list__not-found">Nothing found</p>;
         return booksList;
-    }
+    };
 
     render() {
         return (

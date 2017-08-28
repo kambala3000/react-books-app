@@ -10,45 +10,42 @@ class SearchBar extends Component {
             queryString: '',
             hasChanged: false
         };
-        this.changeSearchQuery = this.changeSearchQuery.bind(this);
-        this.findOnClick = this.findOnClick.bind(this);
-        this.findOnKeyDown = this.findOnKeyDown.bind(this);
     }
 
-    changeSearchQuery(e) {
+    changeSearchQuery = e => {
         const queryString = e.target.value.toLowerCase().trim();
         this.setState({
             queryString,
             hasChanged: true
         });
-    }
+    };
 
-    findOnClick() {
+    findOnClick = () => {
         if (this.state.hasChanged) {
             this.setState({ hasChanged: false });
             const { fetchBooks } = this.props.booksActions;
             fetchBooks(this.state.queryString);
         }
-    }
+    };
 
-    findOnKeyDown(e) {
+    findOnKeyDown = e => {
         if (e.keyCode === 13) {
             this.findOnClick();
         }
-    }
+    };
 
     render() {
         return (
             <div className="search-bar">
                 <input
                     type="search"
-                    className="search-bar__search"
+                    className="search-bar__input"
                     placeholder="Search..."
                     onChange={this.changeSearchQuery}
                     onKeyDown={this.findOnKeyDown}
                 />
-                <button className="search-bar__search" onClick={this.findOnClick}>
-                    Get
+                <button className="search-bar__button" onClick={this.findOnClick}>
+                    Search
                 </button>
             </div>
         );

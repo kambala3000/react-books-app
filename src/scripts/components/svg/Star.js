@@ -1,43 +1,27 @@
 import React, { Component } from 'react';
 import SVGInline from 'react-svg-inline';
-import classnames from 'classnames';
 
 class Star extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false,
             starred: false
         };
-        this.onClickHandler = this.onClickHandler.bind(this);
-        this.mouseHandler = this.mouseHandler.bind(this);
     }
 
-    onClickHandler() {
+    onClickHandler = () => {
         this.setState({
             starred: !this.state.starred
         });
-    }
-
-    mouseHandler() {
-        if (!this.state.starred) {
-            this.setState({
-                show: !this.state.show
-            });
-        }
-    }
+    };
 
     render() {
         return (
             <SVGInline
-                className={classnames('book-item__star-icon', {
-                    'book-item__star-icon--hover-effects': this.state.starred
-                })}
+                className="book-item__star-icon"
                 onClick={this.onClickHandler}
-                onMouseEnter={this.mouseHandler}
-                onMouseLeave={this.mouseHandler}
                 svg={
-                    this.state.show
+                    this.state.starred
                         ? `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 47.94 47.94" style="enable-background:new 0 0 47.94 47.94; width="24px" height="24px" xml:space="preserve">
                             <path d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757

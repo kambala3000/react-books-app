@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import '../../css/BookItem.css';
+import langCodes from '../share/langCodes';
 import defaultImage from '../../img/notebook.png';
 import Star from './svg/Star';
 
@@ -57,9 +58,15 @@ class BookItem extends Component {
                         >
                             {description}
                         </p>}
-                    {description &&
-                        description.length > 350 &&
-                        <span className="book-item__show-more">Read more...</span>}
+                    <div className="book-item__bottom-line-wrap">
+                        <p className="book-item__additional-info">
+                            {langCodes[language]}
+                            {pageCount && `, ${pageCount} pages`}
+                        </p>
+                        {description &&
+                            description.length > 350 &&
+                            <span className="book-item__show-more">Read more...</span>}
+                    </div>
                     <div className="book-item__star-wrap">
                         <Star />
                     </div>
