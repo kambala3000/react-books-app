@@ -27,7 +27,7 @@ class BooksList extends Component {
                         language={item.volumeInfo.language}
                     />
                 )
-              : <p className="books-list__not-found">Nothing found</p>;
+              : <p className="books-list__not-found">Sorry, nothing found.</p>;
         return booksList;
     };
 

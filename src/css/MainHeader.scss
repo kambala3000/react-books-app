@@ -1,0 +1,33 @@
+.main-header {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efebe9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    &__app-title {
+        text-decoration: none;
+        color: #383838;
+        font: 800 32px/1.4 'Open Sans', sans-serif;
+        cursor: pointer;
+    }
+    &__favorites-link {
+        width: 110px;
+        line-height: 25px;
+        background-image: url('../img/star-bg.png');
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: 22px;
+        color: #212121;
+        cursor: pointer;
+        &:hover {
+            opacity: .7;
+        }
+        &--counter {
+            font-weight: 600;
+        }
+    }
+}
