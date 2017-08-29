@@ -17,6 +17,7 @@ class BooksList extends Component {
               ? list.map(item =>
                     <BookItem
                         key={item.id}
+                        id={item.id}
                         images={item.volumeInfo.imageLinks}
                         title={item.volumeInfo.title}
                         authors={item.volumeInfo.authors}

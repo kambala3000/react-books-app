@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div className="app">
-                <MainHeader />
+                <MainHeader favoritesLength={this.props.favorites.length} />
                 <SearchBar booksActions={this.props.booksActions} />
                 <BooksList books={this.props.books} />
             </div>
@@ -22,7 +22,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        books: state.books
+        books: state.books,
+        favorites: state.favorites
     };
 }
 

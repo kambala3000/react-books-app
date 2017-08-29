@@ -90,7 +90,7 @@ class BookItem extends Component {
                             </span>}
                     </div>
                     <div className="book-item__star-wrap">
-                        <Star />
+                        <Star favoritesActions={this.props.favoritesActions} item={this.props} />
                     </div>
                 </div>
             </div>
@@ -99,6 +99,7 @@ class BookItem extends Component {
 }
 
 BookItem.propTypes = {
+    id: PropTypes.string.isRequired,
     images: PropTypes.object,
     title: PropTypes.string.isRequired,
     authors: PropTypes.array,

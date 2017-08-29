@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import SVGInline from 'react-svg-inline';
+import * as favoritesActions from '../../actions/FavoritesActions.js';
 
 class Star extends Component {
     constructor(props) {
         super(props);
+        const { favorites, item } = this.props;
         this.state = {
-            starred: false
+            starred: favorites.findIndex(element => element.id === item.id) !== -1
         };
     }
 
     onClickHandler = () => {
+        const { addToFavorites, removeItem } = this.props.favoritesActions;
+        if (this.state.starred) {
+            removeItem(this.props.item.id);
+        } else {
+            addToFavorites(this.props.item);
+        }
         this.setState({
             starred: !this.state.starred
         });
@@ -40,4 +52,22 @@ class Star extends Component {
     }
 }
 
-export default Star;
+Star.propTypes = {
+    item: PropTypes.object.isRequired,
+    favorites: PropTypes.array.isRequired,
+    favoritesActions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state) {
+    return {
+        favorites: state.favorites
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        favoritesActions: bindActionCreators(favoritesActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Star);

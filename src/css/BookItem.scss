@@ -43,10 +43,15 @@
         position: absolute;
         top: 0;
         right: 0;
+        width: 24px;
+        height: 24px;
     }
     &__star-icon {
-        cursor: pointer;
+        display: block;
+        width: 24px;
+        height: 24px;
         fill: #fdbf00;
+        cursor: pointer;
         &:hover {
             fill: #ffd24d;
         }
