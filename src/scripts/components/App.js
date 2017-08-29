@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Route, withRouter } from 'react-router-dom';
 import '../../css/App.css';
 import * as booksActions from '../actions/BooksActions.js';
 
@@ -13,8 +14,18 @@ class App extends Component {
         return (
             <div className="app">
                 <MainHeader favoritesLength={this.props.favorites.length} />
-                <SearchBar booksActions={this.props.booksActions} />
-                <BooksList books={this.props.books} />
+
+                <Route
+                    exact
+                    path="/"
+                    render={props =>
+                        <div>
+                            <SearchBar booksActions={this.props.booksActions} />
+                            <BooksList books={this.props.books} />
+                        </div>}
+                />
+
+                <Route path="/favorites" render={props => <div>favorites</div>} />
             </div>
         );
     }
@@ -33,4 +44,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -9,10 +9,12 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     &__app-title {
-        text-decoration: none;
+    }
+    &__app-title-link {
         color: #383838;
         font: 800 32px/1.4 'Open Sans', sans-serif;
         cursor: pointer;
+        text-decoration: none;
     }
     &__favorites-link {
         width: 115px;
@@ -21,6 +23,7 @@
         background-position: right top;
         background-repeat: no-repeat;
         background-size: 22px;
+        text-decoration: none;
         color: #212121;
         cursor: pointer;
         &:hover {
