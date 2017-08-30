@@ -15,6 +15,9 @@
         width: 128px;
         user-select: none;
     }
+    &__image-link {
+        text-decoration: none;
+    }
     &__wrap {
         position: relative;
         width: 632px;
@@ -22,8 +25,20 @@
     &__title {
         width: 92%;
         margin-bottom: 3px;
+    }
+    &__title-link {
         font: 700 20px/28px 'Open Sans', sans-serif;
         color: #795548;
+        text-decoration: none;
+        &:hover {
+            opacity: 0.8;
+        }
+        &:after {
+            content: '\1F50E';
+            font-size: 15px;
+            padding-left: 5px;
+            color: #757575;
+        }
     }
     &__authors {
         margin: 0 0 5px 0;
@@ -63,12 +78,12 @@
         font: 400 14px/18px 'Open Sans', sans-serif;
         color: #333;
         overflow: hidden;
-        transition: max-height ease .5s;
+        transition: max-height ease 0.5s;
         &--cutted {
             &:before {
                 position: absolute;
                 display: block;
-                content: "";
+                content: '';
                 right: 0;
                 left: 0;
                 bottom: -28px;
@@ -80,7 +95,7 @@
                     rgba(255, 255, 255, 1) 58%
                 );
                 opacity: 1;
-                transition: opacity ease .5s;
+                transition: opacity ease 0.5s;
             }
         }
         &--show-all {

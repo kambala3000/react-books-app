@@ -40,7 +40,18 @@ class BookItem extends Component {
         return (
             <div className="book-item">
                 <div className="book-item__image-wrap">
-                    <img src={imageUrl} alt="" className="book-item__image" />
+                    <a
+                        target="_blank"
+                        href={`https://www.google.com/search?q=${title}`}
+                        className="book-item__image-link"
+                    >
+                        <img
+                            src={imageUrl}
+                            alt=""
+                            title="Search in Google"
+                            className="book-item__image"
+                        />
+                    </a>
                 </div>
                 <div className="book-item__wrap">
                     <p className="book-item__info">
@@ -56,7 +67,16 @@ class BookItem extends Component {
                             </span>
                         )}
                     </p>
-                    <h4 className="book-item__title">{title}</h4>
+                    <h4 className="book-item__title">
+                        <a
+                            className="book-item__title-link"
+                            target="_blank"
+                            title="Search in Google"
+                            href={`https://www.google.com/search?q=${title}`}
+                        >
+                            {title}
+                        </a>
+                    </h4>
                     {authors && <p className="book-item__authors">{authors.join(', ')}</p>}
                     {description && (
                         <p
@@ -89,10 +109,7 @@ class BookItem extends Component {
                         )}
                     </div>
                     <div className="book-item__star-wrap">
-                        <Star
-                            favoritesActions={this.props.favoritesActions}
-                            item={this.props.itemData}
-                        />
+                        <Star item={this.props.itemData} />
                     </div>
                 </div>
             </div>
