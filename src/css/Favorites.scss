@@ -1,0 +1,19 @@
+.favorites {
+    &__controls {
+        height: 40px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__back {
+        text-decoration: none;
+        color: #208abe;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    &__list {
+    }
+}

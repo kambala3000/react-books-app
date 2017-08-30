@@ -8,6 +8,7 @@ import * as booksActions from '../actions/BooksActions.js';
 import MainHeader from './MainHeader';
 import BooksList from './BooksList';
 import SearchBar from './SearchBar';
+import Favorites from './Favorites';
 
 class App extends Component {
     render() {
@@ -18,14 +19,18 @@ class App extends Component {
                 <Route
                     exact
                     path="/"
-                    render={props =>
-                        <div>
+                    render={props => (
+                        <div className="app__container">
                             <SearchBar booksActions={this.props.booksActions} />
                             <BooksList books={this.props.books} />
-                        </div>}
+                        </div>
+                    )}
                 />
 
-                <Route path="/favorites" render={props => <div>favorites</div>} />
+                <Route
+                    path="/favorites"
+                    render={props => <Favorites favorites={this.props.favorites} />}
+                />
             </div>
         );
     }

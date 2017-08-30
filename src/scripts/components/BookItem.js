@@ -21,7 +21,7 @@ class BookItem extends Component {
 
     render() {
         const {
-            images,
+            imageLinks,
             title,
             authors,
             publishedDate,
@@ -29,10 +29,10 @@ class BookItem extends Component {
             pageCount,
             categories,
             language
-        } = this.props;
+        } = this.props.itemData.volumeInfo;
         let imageUrl = '';
-        if (images) {
-            imageUrl = images.thumbnail || images.smallThumbnail;
+        if (imageLinks) {
+            imageUrl = imageLinks.thumbnail || imageLinks.smallThumbnail;
         } else {
             imageUrl = defaultImage;
         }
@@ -44,24 +44,21 @@ class BookItem extends Component {
                 </div>
                 <div className="book-item__wrap">
                     <p className="book-item__info">
-                        {categories &&
+                        {categories && (
                             <span className="book-item__info--categories">
                                 {categories.join(', ')}
                                 {', '}
-                            </span>}
-                        {publishedDate &&
+                            </span>
+                        )}
+                        {publishedDate && (
                             <span className="book-item__info--year">
                                 {publishedDate.slice(0, 4)}
-                            </span>}
+                            </span>
+                        )}
                     </p>
-                    <h4 className="book-item__title">
-                        {title}
-                    </h4>
-                    {authors &&
-                        <p className="book-item__authors">
-                            {authors.join(', ')}
-                        </p>}
-                    {description &&
+                    <h4 className="book-item__title">{title}</h4>
+                    {authors && <p className="book-item__authors">{authors.join(', ')}</p>}
+                    {description && (
                         <p
                             className={classnames(
                                 'book-item__description',
@@ -77,20 +74,25 @@ class BookItem extends Component {
                             }}
                         >
                             {description}
-                        </p>}
+                        </p>
+                    )}
                     <div className="book-item__bottom-line-wrap">
                         <p className="book-item__additional-info">
                             {langCodes[language]}
                             {pageCount && `, ${pageCount} pages`}
                         </p>
                         {description &&
-                            description.length > 350 &&
+                        description.length > 350 && (
                             <span className="book-item__show-more" onClick={this.readMoreHandler}>
                                 {this.state.showAll ? 'Hide 🡡' : 'Read more...'}
-                            </span>}
+                            </span>
+                        )}
                     </div>
                     <div className="book-item__star-wrap">
-                        <Star favoritesActions={this.props.favoritesActions} item={this.props} />
+                        <Star
+                            favoritesActions={this.props.favoritesActions}
+                            item={this.props.itemData}
+                        />
                     </div>
                 </div>
             </div>
@@ -99,15 +101,7 @@ class BookItem extends Component {
 }
 
 BookItem.propTypes = {
-    id: PropTypes.string.isRequired,
-    images: PropTypes.object,
-    title: PropTypes.string.isRequired,
-    authors: PropTypes.array,
-    publishedDate: PropTypes.string,
-    desctiption: PropTypes.string,
-    pageCount: PropTypes.number,
-    categories: PropTypes.array,
-    language: PropTypes.string
+    itemData: PropTypes.object.isRequired
 };
 
 export default BookItem;
