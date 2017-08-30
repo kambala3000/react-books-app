@@ -1,4 +1,4 @@
-import { FETCHING_BOOKS, FETCHING_BOOKS_SUCCESS } from '../constants/Books';
+import { FETCHING_BOOKS, FETCHING_BOOKS_SUCCESS, SET_OFFSET } from '../constants/Books';
 
 export function fetchBooks(queryString) {
     return dispatch => {
@@ -16,5 +16,12 @@ export function fetchBooks(queryString) {
                     payload: data.items
                 })
             );
+    };
+}
+
+export function setOffset(offset, page) {
+    return {
+        type: SET_OFFSET,
+        payload: { offset, page }
     };
 }

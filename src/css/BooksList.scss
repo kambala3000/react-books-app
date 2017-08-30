@@ -20,22 +20,29 @@
         display: inline-block;
     }
     &__link {
-        display: block;
-        padding: 6px 12px;
-        line-height: 1.4;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        height: 36px;
         text-decoration: none;
         color: #337ab7;
         background-color: #fff;
-        border: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
         cursor: pointer;
+        &:hover {
+            color: #23527c;
+            background-color: #eee;
+        }
+        &:focus {
+            outline: none;
+        }
     }
-    &__link:hover {
-        color: #23527c;
-        background-color: #eee;
-        border-color: #ddd;
-    }
-    &__link:focus {
-        outline: none;
+    &__item:last-child &__link {
+        border-right: 1px solid #ddd;
     }
     &__item--active &__link {
         color: #fff;

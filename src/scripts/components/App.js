@@ -22,7 +22,10 @@ class App extends Component {
                     render={props => (
                         <div className="app__container">
                             <SearchBar booksActions={this.props.booksActions} />
-                            <BooksList books={this.props.books} />
+                            <BooksList
+                                books={this.props.books}
+                                booksActions={this.props.booksActions}
+                            />
                         </div>
                     )}
                 />
