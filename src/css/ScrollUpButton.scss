@@ -1,16 +1,14 @@
 .scroll-up {
     width: 60px;
-    height: 60px;
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #e0e0e0;
+    background-color: #eeeeee;
     border: none;
-    border-radius: 50%;
-    text-align: center;
-    transition: opacity ease 1s, background-color linear 0.1s;
+    transition: opacity ease 0.7s, background-color linear 0.1s;
     opacity: 0;
     &:hover {
-        background-color: #bdbdbd;
+        background-color: #e0e0e0;
     }
     &--show {
         opacity: 1;
@@ -21,12 +19,17 @@
         outline: none;
     }
     &__arrow-block {
-        display: inline-block;
+        position: absolute;
+        top: 20px;
+        left: 18px;
         width: 25px;
         height: 25px;
-        margin-top: 15px;
         transform: rotate(45deg);
-        border-top: 5px solid #fff;
-        border-left: 5px solid #fff;
+        border-top: 5px solid #d1d1d1;
+        border-left: 5px solid #d1d1d1;
+        transition: border-color linear 0.1s;
+    }
+    &:hover &__arrow-block {
+        border-color: #aaaaaa;
     }
 }

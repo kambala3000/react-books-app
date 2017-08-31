@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
 import '../../css/BooksList.css';
+import Loader from './svg/Loader';
 import BookItem from './BookItem';
 import ScrollUpButton from './ScrollUpButton';
 
@@ -37,7 +38,9 @@ class BooksList extends Component {
         return (
             <div className="books-list">
                 {fetching ? (
-                    <p className="books-list__loading">Loading...</p>
+                    <div className="books-list__loader">
+                        <Loader />
+                    </div>
                 ) : list ? (
                     // eslint-disable-next-line
                     list.map((item, index) => {
@@ -49,7 +52,8 @@ class BooksList extends Component {
                 ) : (
                     <p className="books-list__not-found">Sorry, nothing found.</p>
                 )}
-                {list &&
+                {!fetching &&
+                list &&
                 list.length > 0 && (
                     <div className="books-list__bottom-nav">
                         <div className="books-list__pagination">

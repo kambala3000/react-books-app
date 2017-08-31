@@ -1,9 +1,10 @@
 .books-list {
     &__wrap {
     }
-    &__loading {
-        margin-left: 12px;
-        font: 400 16px/20px 'Open Sans', sans-serif;
+    &__loader {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     &__not-found {
         margin-left: 12px;
@@ -16,8 +17,9 @@
     }
     &__up-btn {
         position: fixed;
-        left: 35px;
-        bottom: 30px;
+        top: 0;
+        bottom: 0;
+        left: 0;
     }
 }
 
