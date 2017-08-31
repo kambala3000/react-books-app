@@ -1,0 +1,32 @@
+.scroll-up {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    transition: opacity ease 1s, background-color linear 0.1s;
+    opacity: 0;
+    &:hover {
+        background-color: #bdbdbd;
+    }
+    &--show {
+        opacity: 1;
+        cursor: pointer;
+    }
+    &:focus {
+        border: none;
+        outline: none;
+    }
+    &__arrow-block {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin-top: 15px;
+        transform: rotate(45deg);
+        border-top: 5px solid #fff;
+        border-left: 5px solid #fff;
+    }
+}

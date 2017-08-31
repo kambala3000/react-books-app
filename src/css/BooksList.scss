@@ -9,12 +9,24 @@
         margin-left: 12px;
         font: 400 16px/20px 'Open Sans', sans-serif;
     }
+    &__bottom-nav {
+        position: relative;
+    }
+    &__pagination {
+    }
+    &__up-btn {
+        position: fixed;
+        left: 35px;
+        bottom: 30px;
+    }
 }
 
 .pagination {
-    display: inline-block;
+    display: block;
     margin: 20px 0;
     border-radius: 4px;
+    list-style: none;
+    text-align: left;
     font-family: 'Open Sans', sans-serif;
     &__item {
         display: inline-block;

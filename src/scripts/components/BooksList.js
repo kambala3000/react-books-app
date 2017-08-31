@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate';
 
 import '../../css/BooksList.css';
 import BookItem from './BookItem';
+import ScrollUpButton from './ScrollUpButton';
 
 class BooksList extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class BooksList extends Component {
                 page: e.selected
             });
         }
+        window.scrollTo(0, 0);
     };
 
     render() {
@@ -34,44 +36,49 @@ class BooksList extends Component {
         let startCount = 0;
         return (
             <div className="books-list">
-                <div className="books-list__wrap">
-                    {fetching ? (
-                        <p className="books-list__loading">Loading...</p>
-                    ) : list ? (
-                        // eslint-disable-next-line
-                        list.map((item, index) => {
-                            if (index >= offset && startCount < this.perPage) {
-                                startCount++;
-                                return <BookItem key={item.id} itemData={item} />;
-                            }
-                        })
-                    ) : (
-                        <p className="books-list__not-found">Sorry, nothing found.</p>
-                    )}
-                    {list &&
-                    list.length > 0 && (
-                        <ReactPaginate
-                            previousLabel={'«'}
-                            nextLabel={'»'}
-                            forcePage={page}
-                            breakLabel={<a href="">...</a>}
-                            breakClassName={'pagination__break'}
-                            pageCount={pagesCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            pageClassName={'pagination__item'}
-                            pageLinkClassName={'pagination__link'}
-                            previousClassName={'pagination__item'}
-                            nextClassName={'pagination__item'}
-                            previousLinkClassName={'pagination__link'}
-                            nextLinkClassName={'pagination__link'}
-                            activeClassName={'pagination__item--active'}
-                            disabledClassName={'pagination__item--disabled'}
-                        />
-                    )}
-                </div>
+                {fetching ? (
+                    <p className="books-list__loading">Loading...</p>
+                ) : list ? (
+                    // eslint-disable-next-line
+                    list.map((item, index) => {
+                        if (index >= offset && startCount < this.perPage) {
+                            startCount++;
+                            return <BookItem key={item.id} itemData={item} />;
+                        }
+                    })
+                ) : (
+                    <p className="books-list__not-found">Sorry, nothing found.</p>
+                )}
+                {list &&
+                list.length > 0 && (
+                    <div className="books-list__bottom-nav">
+                        <div className="books-list__pagination">
+                            <ReactPaginate
+                                previousLabel={'«'}
+                                nextLabel={'»'}
+                                forcePage={page}
+                                breakLabel={<a href="">...</a>}
+                                breakClassName={'pagination__break'}
+                                pageCount={pagesCount}
+                                marginPagesDisplayed={2}
+                                pageRangeDisplayed={5}
+                                onPageChange={this.handlePageClick}
+                                containerClassName={'pagination'}
+                                pageClassName={'pagination__item'}
+                                pageLinkClassName={'pagination__link'}
+                                previousClassName={'pagination__item'}
+                                nextClassName={'pagination__item'}
+                                previousLinkClassName={'pagination__link'}
+                                nextLinkClassName={'pagination__link'}
+                                activeClassName={'pagination__item--active'}
+                                disabledClassName={'pagination__item--disabled'}
+                            />
+                        </div>
+                        <div className="books-list__up-btn">
+                            <ScrollUpButton />
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }

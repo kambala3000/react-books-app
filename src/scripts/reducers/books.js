@@ -14,7 +14,7 @@ export default function books(state = initialState, action) {
         case FETCHING_BOOKS_SUCCESS:
             return { ...state, list: action.payload, fetching: false, offset: 0, page: 0 };
         case SET_OFFSET:
-            return { ...state, offset: action.payload.offset, page: action.payload.page };
+            return { ...state, ...action.payload };
         default:
             return state;
     }
