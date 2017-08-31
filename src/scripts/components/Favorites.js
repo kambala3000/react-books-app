@@ -15,7 +15,7 @@ class Favorites extends Component {
                     </Link>
                 </div>
                 <div className="favorites__list">
-                    <BooksList books={{ list: this.props.favorites, offset: 0, page: 0 }} />
+                    <BooksList books={{ list: this.props.favorites }} rememberPage={false} />
                 </div>
             </div>
         );

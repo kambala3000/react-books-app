@@ -25,6 +25,7 @@ class App extends Component {
                             <BooksList
                                 books={this.props.books}
                                 booksActions={this.props.booksActions}
+                                rememberPage={true}
                             />
                         </div>
                     )}

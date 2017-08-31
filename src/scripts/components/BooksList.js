@@ -9,22 +9,27 @@ class BooksList extends Component {
     constructor(props) {
         super(props);
         this.perPage = 10;
-        // this.state = {
-        //     offset: 0
-        // };
+        this.state = {
+            offset: 0,
+            page: 0
+        };
     }
 
     handlePageClick = e => {
-        console.log(e);
-        const { setOffset } = this.props.booksActions;
-        // this.setState({
-        //     offset: e.selected * this.perPage
-        // });
-        setOffset(e.selected * this.perPage, e.selected);
+        if (this.props.rememberPage) {
+            const { setOffset } = this.props.booksActions;
+            setOffset(e.selected * this.perPage, e.selected);
+        } else {
+            this.setState({
+                offset: e.selected * this.perPage,
+                page: e.selected
+            });
+        }
     };
 
     render() {
-        const { list, fetching, offset, page } = this.props.books;
+        const { list, fetching } = this.props.books;
+        const { offset, page } = this.props.rememberPage ? this.props.books : this.state;
         const pagesCount = list ? Math.ceil(list.length / this.perPage) : 0;
         let startCount = 0;
         return (
@@ -74,7 +79,8 @@ class BooksList extends Component {
 
 BooksList.propTypes = {
     books: PropTypes.object.isRequired,
-    booksActions: PropTypes.object.isRequired
+    booksActions: PropTypes.object,
+    rememberPage: PropTypes.bool.isRequired
 };
 
 export default BooksList;
