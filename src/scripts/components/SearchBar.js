@@ -7,14 +7,26 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            inputValue: '',
             queryString: '',
             hasChanged: false
         };
     }
 
+    clearInput = () => {
+        this.setState({ inputValue: '', queryString: '' });
+    };
+
+    preventFocus = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    };
+
     changeSearchQuery = e => {
         const queryString = e.target.value.toLowerCase().trim();
         this.setState({
+            inputValue: e.target.value,
             queryString,
             hasChanged: true
         });
@@ -43,7 +55,15 @@ class SearchBar extends Component {
                     placeholder="Search..."
                     onChange={this.changeSearchQuery}
                     onKeyDown={this.findOnKeyDown}
+                    value={this.state.inputValue}
                 />
+                <div
+                    className="search-bar__clear"
+                    onMouseDown={this.preventFocus}
+                    onClick={this.clearInput}
+                >
+                    &#215;
+                </div>
                 <button className="search-bar__button" onClick={this.findOnClick}>
                     Search
                 </button>
