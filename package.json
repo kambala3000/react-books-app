@@ -2,7 +2,7 @@
     "name": "react-books-app",
     "version": "0.1.0",
     "private": true,
-    "homepage": "kambala3000.github.io/react-books-app",
+    "homepage": "https://kambala3000.github.io/react-books-app/",
     "dependencies": {
         "classnames": "^2.2.5",
         "gh-pages": "^1.0.0",
