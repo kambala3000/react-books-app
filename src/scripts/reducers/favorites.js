@@ -1,6 +1,6 @@
 import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from '../constants/Favorites';
 
-const initialState = [];
+const initialState = localStorage['favorites'] ? JSON.parse(localStorage['favorites']) : [];
 
 export default function favorites(state = initialState, action) {
     switch (action.type) {

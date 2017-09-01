@@ -1,5 +1,4 @@
 import React from 'react';
-
 import SVGInline from 'react-svg-inline';
 
 const Loader = () => {

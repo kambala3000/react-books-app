@@ -17,7 +17,7 @@
         text-decoration: none;
     }
     &__favorites-link {
-        width: 115px;
+        padding-right: 30px;
         line-height: 25px;
         background-image: url('../img/star-bg.png');
         background-position: right top;
@@ -27,7 +27,7 @@
         color: #212121;
         cursor: pointer;
         &:hover {
-            opacity: .7;
+            opacity: 0.7;
         }
         &--counter {
             font-weight: 600;

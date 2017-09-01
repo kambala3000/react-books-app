@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Route, withRouter } from 'react-router-dom';
+
 import '../../css/App.css';
 import * as booksActions from '../actions/BooksActions.js';
-
 import MainHeader from './MainHeader';
 import BooksList from './BooksList';
 import SearchBar from './SearchBar';
